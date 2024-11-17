@@ -3,7 +3,7 @@ import jwt
 import datetime
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from jwt import ExpiredSignatureError, InvalidTokenError
+from jwt.exceptions import ExpiredSignatureError, InvalidTokenError  # Correct import
 from .config import settings
 
 SECRET_KEY = settings.SECREAT_KEY
@@ -46,4 +46,3 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
         )
     except InvalidTokenError:  # Handles all other JWT-related errors
         raise credentials_exception
-
