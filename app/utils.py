@@ -3,7 +3,7 @@ import jwt
 import datetime
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from jwt import DecodeError, ExpiredSignatureError
+from jwt import ExpiredSignatureError, InvalidTokenError
 from .config import settings
 
 SECRET_KEY = settings.SECREAT_KEY
@@ -44,5 +44,6 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
             detail="Token has expired",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    except DecodeError:
+    except InvalidTokenError:  # Handles all other JWT-related errors
         raise credentials_exception
+
