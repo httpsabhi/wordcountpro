@@ -3,7 +3,7 @@ import jwt
 import datetime
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from jwt.exceptions import ExpiredSignatureError, InvalidTokenError  # Correct import
+from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 from .config import settings
 
 SECRET_KEY = settings.SECREAT_KEY
