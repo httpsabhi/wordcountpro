@@ -4,6 +4,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
 nltk.download("punkt")
+nltk.download('punkt_tab')
 nltk.download("stopwords")
 
 def generate_vocabulary_insights(text):
